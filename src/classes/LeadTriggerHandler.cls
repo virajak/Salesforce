@@ -2,7 +2,6 @@ public class LeadTriggerHandler {
     public static void doCheckDuplicateLead(List<Lead> incomingLeads){
         List<Lead> currentLeads =  new List<Lead>();
         Map<String,String> leadPhoneEmailMap = new Map<String,String>(); 
-       // List<Lead> finalLeads = new List<Lead>();
         currentLeads = [Select Id,Email,Phone from Lead 
                         where (Email!=NULL OR Email!='') AND 
                         (Phone!=NULL OR Phone!='')];
@@ -15,7 +14,7 @@ public class LeadTriggerHandler {
              System.debug('Viraj:'+leadPhoneEmailMap.get(l.Phone));
             if((leadPhoneEmailMap.get(l.Phone) == l.Email)){
                  System.debug('Duplicate Record');
-               l.addError('Duplicate Lead:'+l.Name);
+               l.addError('Duplicate Lead:'+l.Lastname);
           }
         }
       }
